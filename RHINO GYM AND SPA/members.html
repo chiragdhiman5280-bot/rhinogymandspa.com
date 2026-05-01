@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Rhino Gym member portal with membership records, workout splits and diet plans for members.">
+<title>Member Portal | Rhino Gym & Spa</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<nav class="navbar">
+<div class="logo">
+<img src="images/logo.jpeg" alt="Rhino Logo">
+<span>RHINO GYM</span>
+</div>
+
+<div class="menu-toggle">&#9776;</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#plans">Membership</a></li>
+<li><a href="members.html" class="active">Members</a></li>
+<li><a href="workout.html">Workout</a></li>
+<li><a href="diet.html">Diet</a></li>
+<li><a href="goals.html">Body Goals</a></li>
+<li><a href="bmi.html">BMI</a></li>
+<li><a href="payment.html" class="nav-btn">Join Now</a></li>
+</ul>
+</nav>
+</header>
+
+<main class="member-page">
+<section class="member-hero">
+<div class="member-hero-content">
+<p class="tagline">RHINO MEMBER PORTAL</p>
+<h1>Member Workout And Diet Plans</h1>
+<p>
+Enter your name and phone number, verify OTP, and get your Rhino Gym membership ID.
+</p>
+</div>
+</section>
+
+<section class="member-access">
+<div class="member-login-card">
+<div>
+<p class="members-eyebrow">Member Access</p>
+<h2>OTP Member Login</h2>
+<p>Login with your name and phone number. After OTP verification, your membership ID will be shown.</p>
+</div>
+
+<form class="member-login-form" id="member-login-form">
+<div class="member-login-fields">
+<label for="member-name-input">
+Full Name
+<input type="text" id="member-name-input" placeholder="Your name" autocomplete="name">
+</label>
+<label for="member-contact-input">
+Phone Number
+<input type="tel" id="member-contact-input" placeholder="+91 98765 43210" autocomplete="tel">
+</label>
+<label for="member-otp-input">
+OTP Code
+<input type="text" id="member-otp-input" placeholder="Enter OTP" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+</label>
+</div>
+<div class="member-login-actions">
+<button type="button" class="hero-btn dark" id="send-otp-button">Send OTP</button>
+<button type="submit" class="hero-btn gold">Verify And Get ID</button>
+</div>
+<div id="recaptcha-container"></div>
+<p class="member-login-status" id="member-login-status" aria-live="polite"></p>
+</form>
+</div>
+</section>
+
+<section class="members-directory" id="member-record-section" hidden>
+<div class="members-panel">
+<div class="members-panel-head">
+<div>
+<p class="members-eyebrow">Membership Record</p>
+<h2 id="member-welcome">Active Member</h2>
+</div>
+<span class="members-count-badge">ID Generated</span>
+</div>
+
+<div class="members-table-wrap">
+<table class="members-table">
+<thead>
+<tr>
+<th>Membership ID</th>
+<th>Name</th>
+<th>Phone Number</th>
+<th>Started Date</th>
+<th>Expiring Date</th>
+</tr>
+</thead>
+<tbody id="member-record-body">
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section class="member-plans" id="member-plans" hidden>
+<div class="member-plans-head">
+<p class="members-eyebrow">Member-Only Training</p>
+<h2>Workout Splits And Diet Plans By Goal</h2>
+<p class="section-subtitle">
+Choose the plan that matches your current goal and review progress with your Rhino coach.
+</p>
+</div>
+
+<div class="member-plan-grid">
+
+<article class="member-plan-card">
+<span class="plan-badge">Beginners</span>
+<h3>Beginner Foundation</h3>
+<div class="member-plan-columns">
+<div>
+<h4>Workout Split</h4>
+<ul class="plan-list">
+<li>Monday: Full body machines</li>
+<li>Tuesday: Rest or light walk</li>
+<li>Wednesday: Full body strength</li>
+<li>Thursday: Mobility and cardio</li>
+<li>Friday: Full body technique</li>
+<li>Weekend: Recovery</li>
+</ul>
+</div>
+<div>
+<h4>Diet Plan</h4>
+<ul class="plan-list">
+<li>Protein in every main meal</li>
+<li>Simple home meals with roti, rice, dal, eggs, paneer or chicken</li>
+<li>Fruit before training when energy is low</li>
+<li>2.5 to 3 liters water daily</li>
+</ul>
+</div>
+</div>
+</article>
+
+<article class="member-plan-card featured">
+<span class="plan-badge">Fat Loss</span>
+<h3>Fat Loss And Toning</h3>
+<div class="member-plan-columns">
+<div>
+<h4>Workout Split</h4>
+<ul class="plan-list">
+<li>Monday: Upper body plus cardio</li>
+<li>Tuesday: Lower body plus core</li>
+<li>Wednesday: Cardio intervals</li>
+<li>Thursday: Push and pull training</li>
+<li>Friday: Legs plus steady cardio</li>
+<li>Saturday: Mobility and abs</li>
+</ul>
+</div>
+<div>
+<h4>Diet Plan</h4>
+<ul class="plan-list">
+<li>Moderate calorie deficit</li>
+<li>High protein breakfast</li>
+<li>Lean protein with vegetables at lunch and dinner</li>
+<li>Limit fried food, sugar drinks and late-night snacks</li>
+</ul>
+</div>
+</div>
+</article>
+
+<article class="member-plan-card">
+<span class="plan-badge">Muscle Gain</span>
+<h3>Bodybuilding Split</h3>
+<div class="member-plan-columns">
+<div>
+<h4>Workout Split</h4>
+<ul class="plan-list">
+<li>Monday: Chest and triceps</li>
+<li>Tuesday: Back and biceps</li>
+<li>Wednesday: Legs</li>
+<li>Thursday: Shoulders and abs</li>
+<li>Friday: Arms and weak points</li>
+<li>Saturday: Pump workout or recovery cardio</li>
+</ul>
+</div>
+<div>
+<h4>Diet Plan</h4>
+<ul class="plan-list">
+<li>Small calorie surplus</li>
+<li>Protein target across 4 meals</li>
+<li>Carbs around workout time</li>
+<li>Track body weight and increase food slowly</li>
+</ul>
+</div>
+</div>
+</article>
+
+<article class="member-plan-card">
+<span class="plan-badge">Strength</span>
+<h3>Strength Focus</h3>
+<div class="member-plan-columns">
+<div>
+<h4>Workout Split</h4>
+<ul class="plan-list">
+<li>Monday: Heavy push</li>
+<li>Tuesday: Heavy legs</li>
+<li>Wednesday: Rest and mobility</li>
+<li>Thursday: Heavy pull</li>
+<li>Friday: Full body strength</li>
+<li>Weekend: Recovery and stretching</li>
+</ul>
+</div>
+<div>
+<h4>Diet Plan</h4>
+<ul class="plan-list">
+<li>Balanced meals with enough carbs</li>
+<li>Protein with every meal</li>
+<li>Hydration and salt before heavy sessions</li>
+<li>Prioritize sleep and recovery foods</li>
+</ul>
+</div>
+</div>
+</article>
+
+<article class="member-plan-card">
+<span class="plan-badge">Overall Fitness</span>
+<h3>Overall Fitness Plan</h3>
+<div class="member-plan-columns">
+<div>
+<h4>Workout Split</h4>
+<ul class="plan-list">
+<li>Monday: Full body strength</li>
+<li>Tuesday: Cardio and core</li>
+<li>Wednesday: Upper body</li>
+<li>Thursday: Mobility and recovery</li>
+<li>Friday: Lower body</li>
+<li>Saturday: Conditioning circuit</li>
+</ul>
+</div>
+<div>
+<h4>Diet Plan</h4>
+<ul class="plan-list">
+<li>Balanced protein, carbs and healthy fats</li>
+<li>Vegetables or salad with two meals</li>
+<li>Consistent meal timing</li>
+<li>Flexible weekend meal while staying on track</li>
+</ul>
+</div>
+</div>
+</article>
+
+</div>
+</section>
+</main>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+getAuth,
+RecaptchaVerifier,
+signInWithPhoneNumber
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyCBMnPTT-NJ2mzQWd1iM5b_kojtNlxkxhg",
+authDomain: "rhino-gym-admin.firebaseapp.com",
+projectId: "rhino-gym-admin",
+storageBucket: "rhino-gym-admin.firebasestorage.app",
+messagingSenderId: "837079269901",
+appId: "1:837079269901:web:416a56da4bdd02a5160b44",
+measurementId: "G-K54DXWWJLK"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+if(menuToggle && navLinks){
+menuToggle.addEventListener("click", function(){
+navLinks.classList.toggle("active");
+menuToggle.innerHTML = navLinks.classList.contains("active") ? "&times;" : "&#9776;";
+});
+}
+
+const memberLoginForm = document.getElementById("member-login-form");
+const memberNameInput = document.getElementById("member-name-input");
+const memberContactInput = document.getElementById("member-contact-input");
+const memberOtpInput = document.getElementById("member-otp-input");
+const sendOtpButton = document.getElementById("send-otp-button");
+const memberLoginStatus = document.getElementById("member-login-status");
+const memberRecordSection = document.getElementById("member-record-section");
+const memberPlans = document.getElementById("member-plans");
+const memberWelcome = document.getElementById("member-welcome");
+const memberRecordBody = document.getElementById("member-record-body");
+const generatedMembersKey = "rhinoGeneratedMembers";
+let pendingOtpName = "";
+let pendingOtpContact = "";
+let confirmationResult = null;
+let recaptchaVerifier = null;
+let recaptchaWidgetId = null;
+
+function normalizeContact(value){
+return value.trim().toLowerCase();
+}
+
+function formatPhoneNumber(value){
+const trimmed = value.trim();
+if(trimmed.startsWith("+")){
+return "+" + trimmed.slice(1).replace(/\D/g,"");
+}
+
+const digits = trimmed.replace(/\D/g,"");
+if(digits.length === 10){
+return "+91" + digits;
+}
+
+return "+" + digits;
+}
+
+function formatDate(date){
+const day = String(date.getDate()).padStart(2,"0");
+const month = String(date.getMonth() + 1).padStart(2,"0");
+const year = date.getFullYear();
+return day + "-" + month + "-" + year;
+}
+
+function getStoredMembers(){
+try{
+return JSON.parse(localStorage.getItem(generatedMembersKey)) || {};
+}catch(error){
+return {};
+}
+}
+
+function saveStoredMembers(members){
+localStorage.setItem(generatedMembersKey, JSON.stringify(members));
+}
+
+function generateMembershipId(members){
+const nextNumber = Object.keys(members).length + 1;
+return "RGS-" + String(nextNumber).padStart(4,"0");
+}
+
+function getOrCreateMember(name, phoneNumber){
+const members = getStoredMembers();
+
+if(members[phoneNumber]){
+members[phoneNumber].name = name;
+saveStoredMembers(members);
+return members[phoneNumber];
+}
+
+const member = {
+id:generateMembershipId(members),
+name:name,
+phone:phoneNumber,
+started:formatDate(new Date()),
+expiry:"To be updated"
+};
+
+members[phoneNumber] = member;
+saveStoredMembers(members);
+return member;
+}
+
+function renderMemberRecord(member){
+memberRecordBody.innerHTML = "";
+
+const row = document.createElement("tr");
+const values = [member.id, member.name, member.phone, member.started, member.expiry];
+
+values.forEach(function(value,index){
+const cell = document.createElement("td");
+
+if(index === 0){
+const idBadge = document.createElement("span");
+idBadge.className = "member-id";
+idBadge.textContent = value;
+cell.appendChild(idBadge);
+}else{
+cell.textContent = value;
+}
+
+row.appendChild(cell);
+});
+
+memberRecordBody.appendChild(row);
+}
+
+function setLoginError(message){
+memberRecordSection.hidden = true;
+memberPlans.hidden = true;
+memberLoginStatus.innerText = message;
+memberLoginStatus.classList.remove("success");
+memberLoginStatus.classList.add("error");
+}
+
+function setLoginSuccess(message){
+memberLoginStatus.innerText = message;
+memberLoginStatus.classList.remove("error");
+memberLoginStatus.classList.add("success");
+}
+
+function getRecaptchaVerifier(){
+if(!recaptchaVerifier){
+recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+size:"normal"
+});
+recaptchaVerifier.render().then(function(widgetId){
+recaptchaWidgetId = widgetId;
+});
+}
+
+return recaptchaVerifier;
+}
+
+function resetRecaptcha(){
+if(window.grecaptcha && recaptchaWidgetId !== null){
+window.grecaptcha.reset(recaptchaWidgetId);
+}
+}
+
+function showMemberArea(member, message){
+memberWelcome.innerText = member.name
+? "Welcome, " + member.name
+: "Welcome, Rhino Member";
+renderMemberRecord(member);
+memberRecordSection.hidden = false;
+memberPlans.hidden = false;
+memberLoginStatus.innerText = message;
+memberLoginStatus.classList.remove("error");
+memberLoginStatus.classList.add("success");
+memberPlans.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+if(sendOtpButton){
+sendOtpButton.addEventListener("click", async function(){
+const enteredName = memberNameInput.value.trim();
+const enteredContact = normalizeContact(memberContactInput.value);
+
+if(enteredName === ""){
+setLoginError("Enter your name to continue.");
+return;
+}
+
+if(enteredContact === ""){
+setLoginError("Enter your phone number to receive OTP.");
+return;
+}
+
+const phoneNumber = formatPhoneNumber(enteredContact);
+
+if(!/^\+[1-9]\d{9,14}$/.test(phoneNumber)){
+setLoginError("Enter a valid phone number, for example +91 98765 43210.");
+return;
+}
+
+sendOtpButton.disabled = true;
+setLoginSuccess("Sending OTP...");
+
+try{
+const verifier = getRecaptchaVerifier();
+confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, verifier);
+pendingOtpName = enteredName;
+pendingOtpContact = phoneNumber;
+setLoginSuccess("OTP sent to " + phoneNumber + ". Enter the code to get your membership ID.");
+memberOtpInput.focus();
+}catch(error){
+resetRecaptcha();
+setLoginError("Could not send OTP. Check Firebase Phone Auth setup and try again.");
+console.error(error);
+}finally{
+sendOtpButton.disabled = false;
+}
+});
+}
+
+if(memberLoginForm){
+memberLoginForm.addEventListener("submit", async function(event){
+event.preventDefault();
+const enteredName = memberNameInput.value.trim();
+const enteredContact = formatPhoneNumber(memberContactInput.value);
+const enteredOtp = memberOtpInput.value.trim();
+
+if(enteredName === ""){
+setLoginError("Enter your name to continue.");
+return;
+}
+
+if(enteredContact === "" || enteredOtp === ""){
+setLoginError("Enter your phone number and OTP to continue.");
+return;
+}
+
+if(
+enteredName !== pendingOtpName ||
+enteredContact !== pendingOtpContact ||
+!confirmationResult
+){
+setLoginError("Please send a new OTP and try again.");
+return;
+}
+
+try{
+await confirmationResult.confirm(enteredOtp);
+const member = getOrCreateMember(enteredName, enteredContact);
+showMemberArea(member, "OTP verified. Your Rhino membership ID is " + member.id + ".");
+confirmationResult = null;
+}catch(error){
+setLoginError("Invalid OTP. Please check the code and try again.");
+console.error(error);
+}
+});
+}
+</script>
+
+</body>
+</html>

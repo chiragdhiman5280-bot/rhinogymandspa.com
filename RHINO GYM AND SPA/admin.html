@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>Rhino Admin Login</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#111;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+}
+
+.login-box{
+background:#1b1b1b;
+padding:35px;
+border-radius:18px;
+width:350px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+h1{
+color:gold;
+margin-bottom:25px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+background:#2a2a2a;
+color:white;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:gold;
+color:black;
+font-weight:bold;
+cursor:pointer;
+}
+
+#msg{
+margin-top:15px;
+font-size:14px;
+}
+
+:root{
+--page-bg:#111;
+--surface:#1b1b1b;
+--input-bg:#2a2a2a;
+--text:#ffffff;
+--accent:#ffd700;
+--accent-strong:#ffcc00;
+--accent-contrast:#080808;
+--border:rgba(255,255,255,0.08);
+--shadow:0 10px 30px rgba(0,0,0,0.4);
+color-scheme:dark;
+}
+
+@media(prefers-color-scheme:light){
+:root{
+--page-bg:#f7f3ea;
+--surface:#ffffff;
+--input-bg:#ffffff;
+--text:#211d15;
+--accent:#b88700;
+--accent-strong:#d9a600;
+--accent-contrast:#14110c;
+--border:rgba(42,35,21,0.14);
+--shadow:0 12px 30px rgba(69,54,21,0.14);
+color-scheme:light;
+}
+}
+
+body{
+background:var(--page-bg);
+color:var(--text);
+}
+
+.login-box{
+background:var(--surface);
+box-shadow:var(--shadow);
+border:1px solid var(--border);
+}
+
+h1{
+color:var(--accent);
+}
+
+input{
+background:var(--input-bg);
+color:var(--text);
+border:1px solid var(--border);
+}
+
+button{
+background:linear-gradient(135deg,var(--accent),var(--accent-strong));
+color:var(--accent-contrast);
+}
+</style>
+
+</head>
+<body>
+
+<div class="login-box">
+
+<h1>Rhino Admin</h1>
+
+<input type="email" id="email" placeholder="Admin Email">
+
+<input type="password" id="password" placeholder="Password">
+
+<button id="loginBtn">Login</button>
+
+<p id="msg"></p>
+
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>
